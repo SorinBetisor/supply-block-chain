@@ -1,22 +1,45 @@
-# sv
+# Blockchain Supply Chain Demo
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A demonstration of blockchain technology applied to supply chain management. This interactive demo showcases how products can be tracked through their entire journey from origin to destination using cryptographic verification and tamper-proof blockchain records.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Custom Blockchain Creation**: Build your own supply chain blockchain by adding blocks step-by-step
+- **Zara Demo**: Explore a complete real-world example tracking a Zara sweatshirt from cotton farm to retail store
+- **Cryptographic Verification**: Each block is linked to the previous one through SHA-256 hashing
+- **Supply Chain Data Tracking**: Record detailed information including:
+  - Company and location data
+  - Product details and batch IDs
+  - Transportation information
+  - Certifications and compliance documents
+  - Legal documentation with file hashing
+- **Visual Blockchain Display**: See the complete chain with visual connectors showing the relationship between blocks
+- **Tamper Detection**: Blockchain integrity ensures any modifications are immediately detectable
+
+## Tech Stack
+
+- **SvelteKit** - Modern web framework
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Styling
+- **Web Crypto API** - Cryptographic hashing (SHA-256)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm, pnpm, or yarn
+
+### Installation
 
 ```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+cd demo-app
+npm install
 ```
 
-## Developing
+### Development
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Start the development server:
 
 ```sh
 npm run dev
@@ -25,14 +48,38 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+The app will be available at `http://localhost:5173`
 
-To create a production version of your app:
+### Building
+
+To create a production version:
 
 ```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview the production build:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+npm run preview
+```
+
+## Deployment
+
+This project is ready to deploy to Vercel. Simply connect your repository and deploy!
+
+## How It Works
+
+1. **Genesis Block**: Start by creating the first block in the chain
+2. **Add Blocks**: Each new block contains supply chain step data and is cryptographically linked to the previous block
+3. **Verification**: The blockchain maintains integrity through hash-based linking - any tampering breaks the chain
+4. **Visualization**: See the complete supply chain journey with all blocks connected
+
+## Demo Pages
+
+- **Custom Blockchain**: Create your own supply chain from scratch
+- **Zara Demo**: Explore a pre-built example following a Zara sweatshirt through 7 supply chain steps
+
+## License
+
+This is a demonstration project for educational purposes.
