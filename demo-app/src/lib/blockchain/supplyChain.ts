@@ -1,10 +1,10 @@
-import type { SupplyChainData } from './types.js';
+import type { BlockData } from './types/types.js';
 
 /**
  * Predefined supply chain steps for Zara Sweatshirt journey
  * These can be used to quickly populate the demo
  */
-export const ZARA_SWEATSHIRT_STEPS: SupplyChainData[] = [
+export const ZARA_SWEATSHIRT_STEPS: BlockData[] = [
 	{
 		step: 'Cotton Farm',
 		company: 'Organic Cotton Farm Co.',
@@ -222,12 +222,12 @@ export function createSupplyChainData(
 	batchId: string,
 	options?: {
 		coordinates?: { lat: number; lng: number };
-		transport?: SupplyChainData['transport'];
-		certifications?: SupplyChainData['certifications'];
-		documents?: SupplyChainData['documents'];
+		transport?: BlockData['transport'];
+		certifications?: BlockData['certifications'];
+		documents?: BlockData['documents'];
 		description?: string;
 	}
-): SupplyChainData {
+): BlockData {
 	return {
 		step,
 		company,

@@ -1,5 +1,5 @@
-import type { Block, SupplyChainData } from './types.js';
-import { calculateBlockHash, isValidHash } from './utils.js';
+import type { Block, BlockData } from './types/types.js';
+import { calculateBlockHash, isValidHash } from './utils/utils.js';
 
 /**
  * Block Class
@@ -9,14 +9,14 @@ export class BlockClass {
 	public index: number;
 	public previousHash: string;
 	public timestamp: number;
-	public data: SupplyChainData;
+	public data: BlockData;
 	public hash: string;
 	public nonce: number;
 
 	constructor(
 		index: number,
 		previousHash: string,
-		data: SupplyChainData,
+		data: BlockData,
 		timestamp?: number,
 		nonce: number = 0
 	) {

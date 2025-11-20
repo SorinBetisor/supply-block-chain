@@ -1,6 +1,6 @@
-import type { Block, SupplyChainData, ValidationResult, TamperResult } from './types.js';
+import type { Block, BlockData, ValidationResult, TamperResult } from './types/types.js';
 import { BlockClass } from './block.js';
-import { calculateBlockHash } from './utils.js';
+import { calculateBlockHash } from './utils/utils.js';
 
 /**
  * Blockchain Class
@@ -15,12 +15,62 @@ export class Blockchain {
 
 	/**
 	 * Create the genesis block
+	 * The genesis block is the first block in the chain and establishes the initial state
+	 * It contains standardized genesis data that represents the beginning of supply chain tracking
 	 */
-	async createGenesisBlock(data: SupplyChainData): Promise<BlockClass> {
-		const genesisBlock = new BlockClass(0, '0', data);
+	async createGenesisBlock(): Promise<BlockClass> {
+		const genesisData = this.generateGenesisData();
+		const randomNonce = Math.floor(Math.random() * 1000000); // Generate random nonce 0-999999
+		const genesisBlock = new BlockClass(0, '0', genesisData, undefined, randomNonce);
 		await genesisBlock.calculateHash();
 		this.chain.push(genesisBlock);
 		return genesisBlock;
+	}
+
+	/**
+	 * Generate standardized genesis block data
+	 * This represents the "origin" or "start" of the supply chain tracking system
+	 */
+	private generateGenesisData(): BlockData {
+		return {
+			step: 'Supply Chain Origin',
+			company: 'Blockchain Verification System',
+			location: {
+				name: 'Global',
+				coordinates: {
+					lat: 0,
+					lng: 0
+				}
+			},
+			product: {
+				name: 'Supply Chain Tracking',
+				quantity: 1,
+				batchId: 'GENESIS-001',
+				description: 'Genesis block establishing the supply chain verification system'
+			},
+			certifications: [
+				{
+					type: 'SYSTEM_VERIFIED',
+					issuer: 'Blockchain Protocol',
+					certificateId: 'GENESIS-CERT-001',
+					validUntil: '9999-12-31T23:59:59Z' // Effectively permanent
+				}
+			],
+			documents: [
+				{
+					type: 'SYSTEM_INITIALIZATION',
+					documentHash: 'genesis-system-hash-placeholder',
+					documentId: 'GENESIS-DOC-001',
+					url: 'system://genesis'
+				}
+			],
+			metadata: {
+				blockchainVersion: '1.0.0',
+				creationTimestamp: new Date().toISOString(),
+				systemIntegrity: 'verified',
+				trustAnchor: true
+			}
+		};
 	}
 
 	/**
@@ -33,7 +83,7 @@ export class Blockchain {
 	/**
 	 * Add a new block to the chain
 	 */
-	async addBlock(data: SupplyChainData): Promise<BlockClass> {
+	async addBlock(data: BlockData): Promise<BlockClass> {
 		const latestBlock = this.getLatestBlock();
 
 		if (!latestBlock) {
@@ -203,7 +253,7 @@ export class Blockchain {
 	 * Modify a block's data (for demo purposes - to show tampering)
 	 * This will break the chain integrity
 	 */
-	async modifyBlock(index: number, newData: Partial<SupplyChainData>): Promise<BlockClass | null> {
+	async modifyBlock(index: number, newData: Partial<BlockData>): Promise<BlockClass | null> {
 		const block = this.getBlock(index);
 		if (!block) {
 			return null;

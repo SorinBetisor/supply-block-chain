@@ -1,4 +1,4 @@
-import type { Block, SupplyChainData } from './types.js';
+import type { Block, BlockData } from '../types/types.js';
 
 /**
  * Calculate SHA256 hash of a string
@@ -15,7 +15,7 @@ export async function calculateHash(input: string): Promise<string> {
 /**
  * Serialize block data to string for hashing
  */
-export function serializeBlockData(data: SupplyChainData): string {
+export function serializeBlockData(data: BlockData): string {
 	return JSON.stringify(data, Object.keys(data).sort());
 }
 

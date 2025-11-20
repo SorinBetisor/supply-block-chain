@@ -16,10 +16,10 @@ export { BlockClass } from './block.js';
 // Types
 export type {
 	Block,
-	SupplyChainData,
+	BlockData,
 	ValidationResult,
 	TamperResult
-} from './types.js';
+} from './types/types.js';
 
 // Utilities
 export {
@@ -28,7 +28,7 @@ export {
 	serializeBlockData,
 	isValidHash,
 	formatTimestamp
-} from './utils.js';
+} from './utils/utils.js';
 
 // Supply chain data
 export {
