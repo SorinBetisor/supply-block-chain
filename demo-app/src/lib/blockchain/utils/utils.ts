@@ -1,4 +1,4 @@
-import type { Block, BlockData } from '../types/types.js';
+import type { Block, SupplyChainStepData } from '../types/types.ts';
 
 /**
  * Calculate SHA256 hash of a string
@@ -15,7 +15,7 @@ export async function calculateHash(input: string): Promise<string> {
 /**
  * Serialize block data to string for hashing
  */
-export function serializeBlockData(data: BlockData): string {
+export function serializeBlockData(data: SupplyChainStepData): string {
 	return JSON.stringify(data, Object.keys(data).sort());
 }
 
@@ -41,5 +41,16 @@ export function isValidHash(hash: string): boolean {
  */
 export function formatTimestamp(timestamp: number): string {
 	return new Date(timestamp).toLocaleString();
+}
+
+/**
+ * Calculate SHA256 hash of a file
+ * Used for document verification in the blockchain
+ */
+export async function calculateFileHash(file: File): Promise<string> {
+	const arrayBuffer = await file.arrayBuffer();
+	const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer);
+	const hashArray = Array.from(new Uint8Array(hashBuffer));
+	return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 

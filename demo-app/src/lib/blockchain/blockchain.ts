@@ -1,10 +1,15 @@
-import type { Block, BlockData, ValidationResult, TamperResult } from './types/types.js';
-import { BlockClass } from './block.js';
-import { calculateBlockHash } from './utils/utils.js';
+import type { Block, SupplyChainStepData, ValidationResult, TamperResult } from './types/types.ts';
+import { BlockClass } from './block.ts';
+import { calculateBlockHash } from './utils/utils.ts';
 
 /**
  * Blockchain Class
- * Manages the chain of blocks and provides validation/tamper detection
+ * Represents a complete supply chain built from blocks.
+ * 
+ * Each Block represents a single step in the supply chain, and the Blockchain
+ * represents the complete journey of a product from origin to destination.
+ * 
+ * Structure: Block (step 1) → Block (step 2) → ... → Blockchain (complete supply chain)
  */
 export class Blockchain {
 	private chain: BlockClass[];
@@ -31,7 +36,7 @@ export class Blockchain {
 	 * Generate standardized genesis block data
 	 * This represents the "origin" or "start" of the supply chain tracking system
 	 */
-	private generateGenesisData(): BlockData {
+	private generateGenesisData(): SupplyChainStepData {
 		return {
 			step: 'Supply Chain Origin',
 			company: 'Blockchain Verification System',
@@ -83,7 +88,7 @@ export class Blockchain {
 	/**
 	 * Add a new block to the chain
 	 */
-	async addBlock(data: BlockData): Promise<BlockClass> {
+	async addBlock(data: SupplyChainStepData): Promise<BlockClass> {
 		const latestBlock = this.getLatestBlock();
 
 		if (!latestBlock) {
@@ -253,7 +258,7 @@ export class Blockchain {
 	 * Modify a block's data (for demo purposes - to show tampering)
 	 * This will break the chain integrity
 	 */
-	async modifyBlock(index: number, newData: Partial<BlockData>): Promise<BlockClass | null> {
+	async modifyBlock(index: number, newData: Partial<SupplyChainStepData>): Promise<BlockClass | null> {
 		const block = this.getBlock(index);
 		if (!block) {
 			return null;

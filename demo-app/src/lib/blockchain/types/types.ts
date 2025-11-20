@@ -1,8 +1,9 @@
 /**
- * Block Data Structure
- * Represents all the information stored in a block for supply chain tracking
+ * Supply Chain Step Data
+ * Represents the data for a single step in the supply chain
+ * Each step tracks information about the product's journey through the supply chain
  */
-export interface BlockData {
+export interface SupplyChainStepData {
 	// Basic Information
 	step: string; // e.g., "Cotton Farm", "Textile Factory", "Manufacturing"
 	company: string; // Company/entity name
@@ -50,17 +51,34 @@ export interface BlockData {
 }
 
 /**
- * Block Structure
- * Represents a single block in the blockchain
+ * Block
+ * Represents a single step in the supply chain, stored as a block in the blockchain.
+ * Each Block contains one supply chain step's data and links to the previous step.
+ * 
+ * Blocks build up to form a Blockchain, which represents the complete supply chain.
  */
 export interface Block {
-	index: number;
-	previousHash: string;
-	timestamp: number;
-	data: BlockData;
-	hash: string;
-	nonce: number; // For simplicity, we'll use 0 (no PoW)
+	index: number; // Position in the chain (0 = genesis block)
+	previousHash: string; // Hash of the previous block (links blocks together)
+	timestamp: number; // When this step occurred
+	data: SupplyChainStepData; // The supply chain step data
+	hash: string; // Cryptographic hash of this block
+	nonce: number; // Random number used in hash calculation
 }
+
+/**
+ * Blockchain
+ * Represents the complete supply chain as a chain of blocks.
+ */
+export type Blockchain = Block[];
+
+/**
+ * Supply Chain
+ * Alias for Blockchain - makes it explicit that the blockchain represents a supply chain.
+ * The supply chain is the complete journey of a product from origin to destination,
+ * with each step recorded as a Block in the chain.
+ */
+export type SupplyChain = Blockchain;
 
 /**
  * Blockchain Validation Result

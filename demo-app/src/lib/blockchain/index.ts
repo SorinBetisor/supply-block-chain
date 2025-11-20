@@ -10,29 +10,31 @@
  */
 
 // Core classes
-export { Blockchain } from './blockchain.js';
-export { BlockClass } from './block.js';
+export { Blockchain } from './blockchain.ts';
+export { BlockClass } from './block.ts';
 
 // Types
 export type {
 	Block,
-	BlockData,
+	SupplyChainStepData,
+	SupplyChain, // Represents the complete supply chain (type alias for Block[])
 	ValidationResult,
 	TamperResult
-} from './types/types.js';
+} from './types/types.ts';
 
 // Utilities
 export {
 	calculateHash,
 	calculateBlockHash,
+	calculateFileHash,
 	serializeBlockData,
 	isValidHash,
 	formatTimestamp
-} from './utils/utils.js';
+} from './utils/utils.ts';
 
 // Supply chain data
 export {
 	ZARA_SWEATSHIRT_STEPS,
 	createSupplyChainData
-} from './supplyChain.js';
+} from './demo_zara.ts';
 

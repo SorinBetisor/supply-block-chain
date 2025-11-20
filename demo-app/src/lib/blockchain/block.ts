@@ -1,22 +1,26 @@
-import type { Block, BlockData } from './types/types.js';
-import { calculateBlockHash, isValidHash } from './utils/utils.js';
+import type { Block, SupplyChainStepData } from './types/types.ts';
+import { calculateBlockHash, isValidHash } from './utils/utils.ts';
 
 /**
  * Block Class
- * Represents a single block in the blockchain
+ * Represents a single step in the supply chain, stored as a block in the blockchain.
+ * 
+ * Each Block contains one supply chain step's data and links to the previous step
+ * through cryptographic hashing. Blocks build up to form a Blockchain, which
+ * represents the complete supply chain.
  */
 export class BlockClass {
 	public index: number;
 	public previousHash: string;
 	public timestamp: number;
-	public data: BlockData;
+	public data: SupplyChainStepData;
 	public hash: string;
 	public nonce: number;
 
 	constructor(
 		index: number,
 		previousHash: string,
-		data: BlockData,
+		data: SupplyChainStepData,
 		timestamp?: number,
 		nonce: number = 0
 	) {

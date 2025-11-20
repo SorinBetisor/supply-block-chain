@@ -3,7 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
-	import type { Block, BlockData } from '$lib/blockchain/types/types.js';
+	import type { Block, SupplyChainStepData } from '$lib/blockchain/types/types.ts';
 
 	interface Props {
 		block: Block;
