@@ -38,6 +38,11 @@
 	loadZaraDemo();
 </script>
 
+<svelte:head>
+	<title>Zara Supply Chain Demo - Blockchain Product Tracking</title>
+	<meta name="description" content="Complete Zara sweatshirt supply chain journey from cotton farm to retail store. Demonstrates blockchain tracking with real-world supply chain steps." />
+</svelte:head>
+
 <div class="container mx-auto p-6">
 	<div class="mb-6">
 		<div class="flex items-center justify-between mb-2">

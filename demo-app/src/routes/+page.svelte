@@ -42,6 +42,11 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Supply Chain Demo</title>
+	<meta name="description" content="Create your own blockchain supply chain. Add blocks and track products through each step with cryptographic verification." />
+</svelte:head>
+
 <div class="container mx-auto p-6">
 	<div class="flex items-center justify-between mb-6">
 		<h1 class="text-3xl font-bold">Blockchain Supply Chain Demo</h1>
