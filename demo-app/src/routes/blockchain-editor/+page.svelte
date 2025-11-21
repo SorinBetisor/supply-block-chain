@@ -46,15 +46,15 @@
 	<meta name="description" content="Create your own blockchain supply chain. Add blocks and track products through each step with cryptographic verification." />
 </svelte:head>
 
-<div class="container mx-auto p-6">
-	<div class="flex items-center justify-between mb-6">
-		<h1 class="text-3xl font-bold">Blockchain Supply Chain Demo</h1>
-		<div class="flex gap-3 items-center">
-			<Button variant="outline" onclick={() => goto('/')} class="gap-2">
+<div class="container mx-auto p-4 sm:p-6">
+	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+		<h1 class="text-xl sm:text-2xl md:text-3xl font-bold">Blockchain Supply Chain Demo</h1>
+		<div class="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">
+			<Button variant="outline" onclick={() => goto('/')} class="gap-2 w-full sm:w-auto">
 				← Back
 			</Button>
 			{#if blocks.length === 0}
-				<Button size="lg" onclick={generateGenesis} class="gap-2">
+				<Button size="lg" onclick={generateGenesis} class="gap-2 w-full sm:w-auto">
 					Generate Genesis Block
 				</Button>
 			{/if}
@@ -62,9 +62,9 @@
 	</div>
 
 	{#if blocks.length === 0}
-		<div class="flex flex-col items-center justify-center p-12 space-y-4">
-			<div class="text-muted-foreground text-lg">No blocks in the chain yet</div>
-			<p class="text-sm text-muted-foreground">Click "Generate Genesis Block" to start the blockchain</p>
+		<div class="flex flex-col items-center justify-center p-6 sm:p-12 space-y-3 sm:space-y-4">
+			<div class="text-muted-foreground text-base sm:text-lg text-center">No blocks in the chain yet</div>
+			<p class="text-sm text-muted-foreground text-center px-4">Click "Generate Genesis Block" to start the blockchain</p>
 		</div>
 	{:else}
 		<div class="flex flex-col items-center space-y-0 w-full">
@@ -92,7 +92,7 @@
 							Add Block
 						</Button>
 					</Dialog.Trigger>
-					<Dialog.Content class="max-w-2xl max-h-[90vh] overflow-y-auto">
+					<Dialog.Content class="max-w-2xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-auto">
 						<Dialog.Header>
 							<Dialog.Title>Add Supply Chain Step</Dialog.Title>
 							<Dialog.Description>
