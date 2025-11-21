@@ -1,4 +1,42 @@
 /**
+ * Employee Role
+ * Defines the different roles in the Zara supply chain
+ */
+export type EmployeeRole = 
+	| 'farm_manager'
+	| 'textile_manager'
+	| 'manufacturing_manager'
+	| 'qa_inspector'
+	| 'distribution_manager'
+	| 'retail_manager'
+	| 'logistics_coordinator'
+	| 'admin';
+
+/**
+ * Employee
+ * Represents a Zara employee who can add blocks to the supply chain
+ */
+export interface Employee {
+	id: string;
+	name: string;
+	email: string;
+	role: EmployeeRole;
+	department: string;
+	location: string;
+}
+
+/**
+ * Added By Metadata
+ * Tracks who added a block to the blockchain
+ */
+export interface AddedByMetadata {
+	employeeId: string;
+	employeeName: string;
+	employeeRole: EmployeeRole;
+	timestamp: number; // When the employee added this block
+}
+
+/**
  * Supply Chain Step Data
  * Represents the data for a single step in the supply chain
  * Each step tracks information about the product's journey through the supply chain
@@ -45,6 +83,9 @@ export interface SupplyChainStepData {
 		documentId: string;
 		url?: string; // Optional reference URL
 	}>;
+
+	// Employee who added this block (for audit trail)
+	addedBy?: AddedByMetadata;
 
 	// Additional metadata
 	metadata?: Record<string, unknown>;

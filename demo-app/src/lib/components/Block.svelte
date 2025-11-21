@@ -3,6 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
+	import { getRoleDisplayName } from '$lib/auth/employees';
 	import type { Block, SupplyChainStepData } from '$lib/blockchain/types/types.ts';
 
 	interface Props {
@@ -73,6 +74,18 @@
 					<span>Hash: <code class="bg-muted px-1 py-0.5 rounded text-xs">{block.hash.substring(0, 16)}...</code></span>
 					<span>{new Date(block.timestamp).toLocaleString()}</span>
 				</div>
+
+				<!-- Show employee who added this block (collapsed view) -->
+				{#if block.data.addedBy && block.index !== 0}
+					<div class="flex items-center gap-2 text-sm border-t pt-2">
+						<span class="text-muted-foreground">Added by:</span>
+						<span class="font-medium">{block.data.addedBy.employeeName}</span>
+						<Badge variant="outline" class="text-xs">
+							{getRoleDisplayName(block.data.addedBy.employeeRole)}
+						</Badge>
+						<span class="text-xs text-muted-foreground">🔒 Immutable</span>
+					</div>
+				{/if}
 
 				{#if block.data.certifications && block.data.certifications.length > 0}
 					<div class="flex flex-wrap gap-1">
@@ -260,6 +273,36 @@
 								</div>
 							</div>
 						{/each}
+					</div>
+				</div>
+			{/if}
+
+			<!-- Employee Audit Trail (expanded view) -->
+			{#if block.data.addedBy}
+				<Separator />
+				<div>
+					<h5 class="font-medium text-sm text-muted-foreground mb-2">AUDIT TRAIL</h5>
+					<div class="p-3 bg-muted/50 rounded space-y-2">
+						<div class="flex items-center gap-3">
+							<span class="text-sm font-medium">Added by:</span>
+							<span class="text-sm">{block.data.addedBy.employeeName}</span>
+							<Badge variant="secondary">
+								{getRoleDisplayName(block.data.addedBy.employeeRole)}
+							</Badge>
+						</div>
+						<div class="flex items-center gap-3">
+							<span class="text-sm font-medium">Employee ID:</span>
+							<code class="text-xs bg-background px-2 py-1 rounded">
+								{block.data.addedBy.employeeId}
+							</code>
+						</div>
+						<div class="flex items-center gap-3">
+							<span class="text-sm font-medium">Added on:</span>
+							<span class="text-sm">{new Date(block.data.addedBy.timestamp).toLocaleString()}</span>
+						</div>
+						<div class="flex items-center gap-2 text-sm pt-2 border-t">
+							<span class="text-muted-foreground">🔒 This block is immutable and cannot be edited or deleted</span>
+						</div>
 					</div>
 				</div>
 			{/if}

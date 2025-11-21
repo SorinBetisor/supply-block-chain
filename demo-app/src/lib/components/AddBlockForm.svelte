@@ -4,6 +4,8 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { calculateFileHash } from '$lib/blockchain/utils/utils.ts';
+	import { authStore } from '$lib/auth/authStore.svelte';
+	import { canEmployeeAddStep } from '$lib/auth/employees';
 	import type { SupplyChainStepData } from '$lib/blockchain/types/types.ts';
 
 	interface Props {
@@ -103,6 +105,13 @@
 	async function handleSubmit() {
 		if (!step || !company || !locationName || !productName || !batchId) {
 			alert('Please fill in all required fields (Step, Company, Location, Product Name, Batch ID)');
+			return;
+		}
+
+		// Check if current user has permission to add this step type
+		const currentUser = authStore.currentUser;
+		if (currentUser && !canEmployeeAddStep(currentUser.role, step)) {
+			alert(`You don't have permission to add "${step}" steps. Your role (${currentUser.role}) is not authorized for this operation.`);
 			return;
 		}
 

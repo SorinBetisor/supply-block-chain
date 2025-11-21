@@ -3,7 +3,10 @@
 	import { Blockchain } from '$lib/blockchain';
 	import { ZARA_SWEATSHIRT_STEPS } from '$lib/blockchain/demo_zara.ts';
 	import { Button } from '$lib/components/ui/button';
+	import { Badge } from '$lib/components/ui/badge';
 	import { goto } from '$app/navigation';
+	import { authStore } from '$lib/auth/authStore.svelte';
+	import { getRoleDisplayName } from '$lib/auth/employees';
 	import type { Block as BlockType } from '$lib/blockchain/types/types.ts';
 	import ZaraLogo from '$lib/assets/Zara_(retailer)-Logo.wine.svg';
 
@@ -34,7 +37,12 @@
 		}
 	}
 
-	// Load on mount
+	function handleLogout() {
+		authStore.logout();
+		// Stay on current page
+	}
+
+	// Load demo data immediately
 	loadZaraDemo();
 </script>
 
@@ -44,6 +52,27 @@
 </svelte:head>
 
 <div class="container mx-auto p-6">
+	<!-- Employee Info Header -->
+	{#if authStore.currentUser}
+		<div class="bg-muted/50 border rounded-lg p-4 mb-6 flex items-center justify-between">
+			<div class="flex items-center gap-4">
+				<div>
+					<div class="text-sm text-muted-foreground">Logged in as</div>
+					<div class="font-semibold text-lg">{authStore.currentUser.name}</div>
+				</div>
+				<Badge variant="secondary">
+					{getRoleDisplayName(authStore.currentUser.role)}
+				</Badge>
+				<div class="text-sm text-muted-foreground">
+					{authStore.currentUser.location}
+				</div>
+			</div>
+			<Button variant="outline" size="sm" onclick={handleLogout}>
+				Logout
+			</Button>
+		</div>
+	{/if}
+
 	<div class="mb-6">
 		<div class="flex items-center justify-between mb-2">
 			<img src={ZaraLogo} alt="Zara Logo" class="h-16 w-auto" />

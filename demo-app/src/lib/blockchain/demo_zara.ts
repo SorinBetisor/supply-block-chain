@@ -32,7 +32,13 @@ export const ZARA_SWEATSHIRT_STEPS: SupplyChainStepData[] = [
 				documentHash: 'a1b2c3d4e5f6...', // Placeholder
 				documentId: 'CERT-001'
 			}
-		]
+		],
+		addedBy: {
+			employeeId: 'EMP001',
+			employeeName: 'Sarah Johnson',
+			employeeRole: 'farm_manager',
+			timestamp: new Date('2024-01-15T08:30:00Z').getTime()
+		}
 	},
 	{
 		step: 'Cotton Processing',
@@ -63,7 +69,13 @@ export const ZARA_SWEATSHIRT_STEPS: SupplyChainStepData[] = [
 				documentHash: 'c3d4e5f6a1b2...',
 				documentId: 'SHIP-001'
 			}
-		]
+		],
+		addedBy: {
+			employeeId: 'EMP002',
+			employeeName: 'Michael Chen',
+			employeeRole: 'textile_manager',
+			timestamp: new Date('2024-01-20T10:15:00Z').getTime()
+		}
 	},
 	{
 		step: 'Textile Manufacturing',
@@ -102,7 +114,13 @@ export const ZARA_SWEATSHIRT_STEPS: SupplyChainStepData[] = [
 				documentHash: 'e5f6a1b2c3d4...',
 				documentId: 'QUAL-001'
 			}
-		]
+		],
+		addedBy: {
+			employeeId: 'EMP003',
+			employeeName: 'Maria Garcia',
+			employeeRole: 'textile_manager',
+			timestamp: new Date('2024-01-25T14:45:00Z').getTime()
+		}
 	},
 	{
 		step: 'Garment Manufacturing',
@@ -133,7 +151,13 @@ export const ZARA_SWEATSHIRT_STEPS: SupplyChainStepData[] = [
 				documentHash: 'a1b2c3d4e5f6...',
 				documentId: 'SHIP-002'
 			}
-		]
+		],
+		addedBy: {
+			employeeId: 'EMP004',
+			employeeName: 'João Silva',
+			employeeRole: 'manufacturing_manager',
+			timestamp: new Date('2024-02-05T09:30:00Z').getTime()
+		}
 	},
 	{
 		step: 'Quality Control',
@@ -154,7 +178,13 @@ export const ZARA_SWEATSHIRT_STEPS: SupplyChainStepData[] = [
 				documentHash: 'b2c3d4e5f6a1...',
 				documentId: 'QUAL-002'
 			}
-		]
+		],
+		addedBy: {
+			employeeId: 'EMP005',
+			employeeName: 'Ana Rodrigues',
+			employeeRole: 'qa_inspector',
+			timestamp: new Date('2024-02-08T11:20:00Z').getTime()
+		}
 	},
 	{
 		step: 'Distribution Center',
@@ -180,7 +210,13 @@ export const ZARA_SWEATSHIRT_STEPS: SupplyChainStepData[] = [
 				documentHash: 'c3d4e5f6a1b2...',
 				documentId: 'SHIP-003'
 			}
-		]
+		],
+		addedBy: {
+			employeeId: 'EMP006',
+			employeeName: 'Carlos Martínez',
+			employeeRole: 'distribution_manager',
+			timestamp: new Date('2024-02-12T16:00:00Z').getTime()
+		}
 	},
 	{
 		step: 'Retail Store',
@@ -206,7 +242,13 @@ export const ZARA_SWEATSHIRT_STEPS: SupplyChainStepData[] = [
 				documentHash: 'd4e5f6a1b2c3...',
 				documentId: 'INV-004'
 			}
-		]
+		],
+		addedBy: {
+			employeeId: 'EMP007',
+			employeeName: 'Elena López',
+			employeeRole: 'retail_manager',
+			timestamp: new Date('2024-02-15T10:45:00Z').getTime()
+		}
 	}
 ];
 
