@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Block } from '$lib/components';
+	import { goto } from '$app/navigation';
 	import { Blockchain } from '$lib/blockchain';
+	import type { Block as BlockType, SupplyChainStepData } from '$lib/blockchain/types/types.ts';
+	import { Block } from '$lib/components';
+	import AddBlockForm from '$lib/components/AddBlockForm.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as Dialog from '$lib/components/ui/dialog';
-	import AddBlockForm from '$lib/components/AddBlockForm.svelte';
-	import type { Block as BlockType, SupplyChainStepData } from '$lib/blockchain/types/types.ts';
-	import { goto } from '$app/navigation';
 
 	// Create a sample blockchain for demo
 	const blockchain = new Blockchain();
