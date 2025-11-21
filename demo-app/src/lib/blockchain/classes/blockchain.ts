@@ -1,6 +1,6 @@
-import type { Block, SupplyChainStepData, ValidationResult, TamperResult } from './types/types.ts';
+import type { Block, SupplyChainStepData, ValidationResult, TamperResult } from '../types/types.ts';
 import { BlockClass } from './block.ts';
-import { calculateBlockHash } from './utils/utils.ts';
+import { calculateBlockHash } from '../utils/utils.ts';
 
 /**
  * Blockchain Class

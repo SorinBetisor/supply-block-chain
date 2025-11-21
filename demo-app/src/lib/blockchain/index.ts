@@ -10,8 +10,8 @@
  */
 
 // Core classes
-export { Blockchain } from './blockchain.ts';
-export { BlockClass } from './block.ts';
+export { Blockchain } from './classes/blockchain.ts';
+export { BlockClass } from './classes/block.ts';
 
 // Types
 export type {

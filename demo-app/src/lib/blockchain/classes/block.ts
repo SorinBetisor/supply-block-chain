@@ -1,5 +1,5 @@
-import type { Block, SupplyChainStepData } from './types/types.ts';
-import { calculateBlockHash, isValidHash } from './utils/utils.ts';
+import type { Block, SupplyChainStepData } from '../types/types.ts';
+import { calculateBlockHash, isValidHash } from '../utils/utils.ts';
 
 /**
  * Block Class
