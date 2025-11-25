@@ -42,29 +42,58 @@
 </script>
 
 <svelte:head>
-	<title>Supply Chain Demo</title>
-	<meta name="description" content="Create your own blockchain supply chain. Add blocks and track products through each step with cryptographic verification." />
+	<title>Blockchain Editor - Build Custom Supply Chain | Verifiable Origin Tracking</title>
+	<meta name="description" content="Interactive blockchain editor for supply chain tracking. Build your own verifiable supply chain with cryptographic proof of origin, transport routes, and processing steps." />
 </svelte:head>
 
-<div class="container mx-auto p-4 sm:p-6">
-	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-		<h1 class="text-xl sm:text-2xl md:text-3xl font-bold">Blockchain Supply Chain Demo</h1>
-		<div class="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">
-			<Button variant="outline" onclick={() => goto('/')} class="gap-2 w-full sm:w-auto">
-				← Back
-			</Button>
-			{#if blocks.length === 0}
-				<Button size="lg" onclick={generateGenesis} class="gap-2 w-full sm:w-auto">
-					Generate Genesis Block
+<div class="container mx-auto p-4 sm:p-6 max-w-7xl">
+	<div class="mb-8">
+		<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+			<div>
+				<h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-2">Blockchain Supply Chain Editor</h1>
+				<p class="text-sm sm:text-base text-muted-foreground">Build your own verifiable supply chain with cryptographic proof</p>
+			</div>
+			<div class="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">
+				<Button variant="outline" onclick={() => goto('/')} class="gap-2 w-full sm:w-auto">
+					← Back to Home
 				</Button>
-			{/if}
+				{#if blocks.length === 0}
+					<Button size="lg" onclick={generateGenesis} class="gap-2 w-full sm:w-auto shadow-lg shadow-primary/20">
+						Generate Genesis Block
+					</Button>
+				{/if}
+			</div>
 		</div>
+
+		<!-- Instructions -->
+		{#if blocks.length === 0}
+			<div class="bg-gradient-to-br from-primary/5 via-purple-500/5 to-blue-500/5 rounded-2xl border-2 border-primary/10 p-6 sm:p-8">
+				<h2 class="text-xl font-bold text-foreground mb-3">Interactive Blockchain Builder</h2>
+				<p class="text-muted-foreground mb-4 leading-relaxed">
+					Create your own custom supply chain blockchain step-by-step. Each block you add will be cryptographically linked to the previous block, creating an immutable chain of custody that proves origin and tracks every step of the supply chain journey.
+				</p>
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+					<div class="bg-card/50 rounded-lg border p-4">
+						<div class="font-semibold text-foreground mb-1 text-sm">Step 1</div>
+						<p class="text-xs text-muted-foreground">Generate the Genesis Block to initialize your blockchain</p>
+					</div>
+					<div class="bg-card/50 rounded-lg border p-4">
+						<div class="font-semibold text-foreground mb-1 text-sm">Step 2</div>
+						<p class="text-xs text-muted-foreground">Add supply chain steps with detailed information</p>
+					</div>
+					<div class="bg-card/50 rounded-lg border p-4">
+						<div class="font-semibold text-foreground mb-1 text-sm">Step 3</div>
+						<p class="text-xs text-muted-foreground">See cryptographic links forming an immutable chain</p>
+					</div>
+				</div>
+			</div>
+		{/if}
 	</div>
 
 	{#if blocks.length === 0}
-		<div class="flex flex-col items-center justify-center p-6 sm:p-12 space-y-3 sm:space-y-4">
-			<div class="text-muted-foreground text-base sm:text-lg text-center">No blocks in the chain yet</div>
-			<p class="text-sm text-muted-foreground text-center px-4">Click "Generate Genesis Block" to start the blockchain</p>
+		<div class="flex flex-col items-center justify-center p-6 sm:p-12 space-y-3 sm:space-y-4 bg-muted/30 rounded-2xl border-2 border-dashed">
+			<div class="text-muted-foreground text-base sm:text-lg text-center font-medium">Ready to Build Your Supply Chain</div>
+			<p class="text-sm text-muted-foreground text-center px-4 max-w-md">Generate the Genesis Block above to start creating your verifiable supply chain blockchain</p>
 		</div>
 	{:else}
 		<div class="flex flex-col items-center space-y-0 w-full">

@@ -39,17 +39,66 @@
 </script>
 
 <svelte:head>
-	<title>Zara Supply Chain Demo - Blockchain Product Tracking</title>
-	<meta name="description" content="Complete Zara sweatshirt supply chain journey from cotton farm to retail store. Demonstrates blockchain tracking with real-world supply chain steps." />
+	<title>Zara Supply Chain Demo - Verifiable Origin Tracking | Blockchain Transparency</title>
+	<meta name="description" content="Live demonstration of verifiable supply chain tracking. See how blockchain proves origin, transport routes, and sustainability claims for a Zara garment from farm to store." />
 </svelte:head>
 
-<div class="container mx-auto p-6">
-	<div class="mb-6">
-		<div class="flex items-center justify-between mb-2">
-			<img src={ZaraLogo} alt="Zara Logo" class="h-16 w-auto" />
-			<Button variant="outline" onclick={() => goto('/')} class="gap-2">
-				← Back
+<div class="container mx-auto p-6 max-w-7xl">
+	<!-- Header -->
+	<div class="mb-12">
+		<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+			<div class="flex items-center gap-4">
+				<img src={ZaraLogo} alt="Zara Logo" class="h-16 w-auto" />
+			</div>
+			<Button variant="outline" onclick={() => goto('/')} class="gap-2 self-start sm:self-auto">
+				← Back to Home
 			</Button>
+		</div>
+
+		<!-- Demo Introduction -->
+		<div class="bg-gradient-to-br from-primary/5 via-purple-500/5 to-blue-500/5 rounded-2xl border-2 border-primary/10 p-8 mb-8">
+			<h1 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+				Verifiable Fashion Supply Chain
+			</h1>
+			<p class="text-lg text-muted-foreground mb-4 leading-relaxed">
+				This live demonstration showcases how blockchain enables <span class="font-semibold text-foreground">third-party verified tracking</span> of a Zara sweatshirt through its entire supply chain journey. Each block represents a verifiable step with cryptographic proof of origin, transport routes, and processing details.
+			</p>
+			<div class="flex flex-wrap gap-3 text-sm">
+				<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20">
+					<span class="flex h-2 w-2 rounded-full bg-green-600"></span>
+					<span class="font-medium">7 Verified Steps</span>
+				</div>
+				<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20">
+					<span class="flex h-2 w-2 rounded-full bg-blue-600"></span>
+					<span class="font-medium">Immutable Records</span>
+				</div>
+				<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-500/20">
+					<span class="flex h-2 w-2 rounded-full bg-purple-600"></span>
+					<span class="font-medium">Carbon Footprint Tracked</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- What You'll See -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+			<div class="bg-card rounded-xl border p-5">
+				<h3 class="font-semibold text-foreground mb-2 text-sm">Origin Verification</h3>
+				<p class="text-xs text-muted-foreground leading-relaxed">
+					See cryptographic proof of where raw materials originated, with timestamps and geographic data
+				</p>
+			</div>
+			<div class="bg-card rounded-xl border p-5">
+				<h3 class="font-semibold text-foreground mb-2 text-sm">Transport Routes</h3>
+				<p class="text-xs text-muted-foreground leading-relaxed">
+					Track each logistics step with verified handlers, locations, and transportation methods
+				</p>
+			</div>
+			<div class="bg-card rounded-xl border p-5">
+				<h3 class="font-semibold text-foreground mb-2 text-sm">Processing Documentation</h3>
+				<p class="text-xs text-muted-foreground leading-relaxed">
+					View manufacturing, quality checks, and certifications at every stage
+				</p>
+			</div>
 		</div>
 	</div>
 
