@@ -63,7 +63,6 @@ export interface Block {
 	timestamp: number; // When this step occurred
 	data: SupplyChainStepData; // The supply chain step data
 	hash: string; // Cryptographic hash of this block
-	nonce: number; // Random number used in hash calculation
 }
 
 /**

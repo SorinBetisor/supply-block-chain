@@ -25,7 +25,7 @@ export function serializeBlockData(data: SupplyChainStepData): string {
  */
 export async function calculateBlockHash(block: Omit<Block, 'hash'>): Promise<string> {
 	const dataString = serializeBlockData(block.data);
-	const input = `${block.index}${block.previousHash}${block.timestamp}${dataString}${block.nonce}`;
+	const input = `${block.index}${block.previousHash}${block.timestamp}${dataString}`;
 	return calculateHash(input);
 }
 
