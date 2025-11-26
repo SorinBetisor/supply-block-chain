@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
+	import logo from "$lib/assets/logo.png";
 	import { ArrowRight, Database, ShoppingBag, Github, Shield, TrendingUp, FileCheck, Building2, Store, Utensils, Leaf, CheckCircle2, BarChart3, Globe, Network, Lock, GitBranch, Boxes, Workflow } from "@lucide/svelte";
 	import BlockchainAnimation from "$lib/components/BlockchainAnimation.svelte";
 
@@ -18,9 +19,7 @@
 			<div class="flex items-center justify-between h-16">
 				<!-- Logo/Brand -->
 				<button onclick={() => scrollToSection('hero')} class="flex items-center gap-2.5 group">
-					<span class="text-xl font-medium text-foreground tracking-tight">
-						VerifyChain
-					</span>
+					<img src={logo} alt="VerifyChain" class="h-24 w-auto" />
 				</button>
 
 				<!-- Navigation Links -->
@@ -51,55 +50,61 @@
 	</nav>
 
 	<!-- Hero Section -->
-	<section id="hero" class="relative overflow-hidden pt-12 pb-24 sm:pt-16 sm:pb-32 bg-gradient-to-br from-primary/[0.02] via-background to-primary/[0.04]">
+	<section id="hero" class="relative overflow-hidden pt-12 pb-24 sm:pt-16 sm:pb-32 bg-background">
+		<!-- Background Pattern -->
+		<div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
+			<div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 opacity-20 blur-[100px]"></div>
+		</div>
+
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 				<!-- Left Column: Content -->
 				<div class="max-w-2xl">
 					<!-- Badge -->
-					<div class="mb-5">
-						<div class="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-primary/20 bg-primary/5">
-							<span class="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
-							<span class="text-[10px] font-bold uppercase text-primary tracking-widest">Enterprise Blockchain</span>
+					<div class="mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+						<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
+							<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+							<span class="text-[11px] font-bold uppercase text-primary tracking-widest">Enterprise Blockchain</span>
 						</div>
 					</div>
 
 					<!-- Main Heading -->
-					<h1 class="mb-6">
-						<span class="block text-[3.25rem] sm:text-[4rem] lg:text-[5rem] font-black tracking-[-0.04em] text-foreground leading-[0.95] antialiased">
+					<h1 class="mb-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
+						<span class="block text-[3.5rem] sm:text-[4.5rem] lg:text-[5.5rem] font-black tracking-[-0.04em] text-foreground leading-[0.9] antialiased">
 							Stop Faking
 						</span>
-						<span class="block text-[3.25rem] sm:text-[4rem] lg:text-[5rem] font-black tracking-[-0.04em] leading-[0.95] antialiased mt-1" style="background: linear-gradient(135deg, oklch(0.38 0.1 155) 0%, oklch(0.45 0.12 165) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+						<span class="block text-[3.5rem] sm:text-[4.5rem] lg:text-[5.5rem] font-black tracking-[-0.04em] leading-[0.9] antialiased mt-2 bg-gradient-to-r from-primary to-emerald-600 bg-clip-text text-transparent">
 							Sustainability
 						</span>
 					</h1>
 
 					<!-- Subheading -->
-					<p class="text-[1.25rem] sm:text-[1.4rem] text-foreground leading-[1.5] mb-3 max-w-xl font-semibold tracking-tight">
+					<p class="text-[1.25rem] sm:text-[1.5rem] text-foreground leading-[1.4] mb-4 max-w-xl font-semibold tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
 						Blockchain verification businesses can't manipulate
 					</p>
 
-					<p class="text-base sm:text-lg text-muted-foreground/80 leading-[1.65] mb-9 max-w-lg">
+					<p class="text-base sm:text-lg text-muted-foreground/80 leading-[1.6] mb-10 max-w-lg animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
 						Immutable, third-party verified records for supply chain transparency. Trusted by enterprises worldwide.
 					</p>
 
 					<!-- CTA Buttons -->
-					<div class="flex flex-col sm:flex-row gap-3">
-						<Button href="/zara-demo" size="lg" class="w-full sm:w-auto gap-2 h-12 px-8 font-semibold">
-							<ShoppingBag class="h-4 w-4" />
+					<div class="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-400">
+						<Button href="/zara-demo" size="lg" class="w-full sm:w-auto gap-2 h-14 px-8 font-bold text-base shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:-translate-y-0.5">
+							<ShoppingBag class="h-5 w-5" />
 							See Live Demo
 							<ArrowRight class="h-4 w-4" />
 						</Button>
-						<Button href="/blockchain-editor" variant="outline" size="lg" class="w-full sm:w-auto gap-2 h-12 px-8 font-semibold">
-							<Database class="h-4 w-4" />
+						<Button href="/blockchain-editor" variant="outline" size="lg" class="w-full sm:w-auto gap-2 h-14 px-8 font-bold text-base hover:bg-secondary/50 transition-all hover:-translate-y-0.5">
+							<Database class="h-5 w-5" />
 							Try the Editor
 						</Button>
 					</div>
 				</div>
 
 				<!-- Right Column: Animation -->
-				<div class="hidden lg:block">
-					<div class="relative h-[500px]">
+				<div class="hidden lg:block animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
+					<div class="relative h-[600px] w-full">
+						<div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-full blur-3xl"></div>
 						<BlockchainAnimation />
 					</div>
 				</div>
@@ -149,14 +154,14 @@
 
 						<!-- Node 1: Origin -->
 						<div class="space-y-6">
-							<div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6">
-								<div class="flex items-start gap-3 mb-4">
-									<div class="h-10 w-10 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
-										<GitBranch class="h-5 w-5 text-emerald-700" />
+							<div class="group bg-emerald-50/50 border border-emerald-100 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-100/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1">
+								<div class="flex items-start gap-4 mb-4">
+									<div class="h-12 w-12 rounded-xl bg-emerald-100/80 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+										<GitBranch class="h-6 w-6 text-emerald-700" />
 									</div>
 									<div>
-										<h3 class="font-bold text-foreground text-sm mb-1">Origin Claims</h3>
-										<p class="text-xs text-emerald-700 font-medium">Supplier declarations</p>
+										<h3 class="font-bold text-foreground text-base mb-1">Origin Claims</h3>
+										<p class="text-xs text-emerald-700 font-bold uppercase tracking-wide">Supplier declarations</p>
 									</div>
 								</div>
 								<p class="text-sm text-muted-foreground leading-relaxed">
@@ -164,14 +169,14 @@
 								</p>
 							</div>
 
-							<div class="bg-sky-50 border border-sky-200 rounded-xl p-6">
-								<div class="flex items-start gap-3 mb-4">
-									<div class="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center flex-shrink-0">
-										<Network class="h-5 w-5 text-sky-700" />
+							<div class="group bg-sky-50/50 border border-sky-100 hover:border-sky-300 hover:shadow-lg hover:shadow-sky-100/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1">
+								<div class="flex items-start gap-4 mb-4">
+									<div class="h-12 w-12 rounded-xl bg-sky-100/80 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+										<Network class="h-6 w-6 text-sky-700" />
 									</div>
 									<div>
-										<h3 class="font-bold text-foreground text-sm mb-1">Transport Records</h3>
-										<p class="text-xs text-sky-700 font-medium">Logistics providers</p>
+										<h3 class="font-bold text-foreground text-base mb-1">Transport Records</h3>
+										<p class="text-xs text-sky-700 font-bold uppercase tracking-wide">Logistics providers</p>
 									</div>
 								</div>
 								<p class="text-sm text-muted-foreground leading-relaxed">
@@ -182,14 +187,14 @@
 
 						<!-- Node 2: Verification -->
 						<div class="space-y-6">
-							<div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
-								<div class="flex items-start gap-3 mb-4">
-									<div class="h-10 w-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
-										<FileCheck class="h-5 w-5 text-amber-700" />
+							<div class="group bg-amber-50/50 border border-amber-100 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1">
+								<div class="flex items-start gap-4 mb-4">
+									<div class="h-12 w-12 rounded-xl bg-amber-100/80 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+										<FileCheck class="h-6 w-6 text-amber-700" />
 									</div>
 									<div>
-										<h3 class="font-bold text-foreground text-sm mb-1">Audit Trail</h3>
-										<p class="text-xs text-amber-700 font-medium">Third-party auditors</p>
+										<h3 class="font-bold text-foreground text-base mb-1">Audit Trail</h3>
+										<p class="text-xs text-amber-700 font-bold uppercase tracking-wide">Third-party auditors</p>
 									</div>
 								</div>
 								<p class="text-sm text-muted-foreground leading-relaxed">
@@ -197,14 +202,14 @@
 								</p>
 							</div>
 
-							<div class="bg-purple-50 border border-purple-200 rounded-xl p-6">
-								<div class="flex items-start gap-3 mb-4">
-									<div class="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
-										<BarChart3 class="h-5 w-5 text-purple-700" />
+							<div class="group bg-purple-50/50 border border-purple-100 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1">
+								<div class="flex items-start gap-4 mb-4">
+									<div class="h-12 w-12 rounded-xl bg-purple-100/80 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+										<BarChart3 class="h-6 w-6 text-purple-700" />
 									</div>
 									<div>
-										<h3 class="font-bold text-foreground text-sm mb-1">Carbon Metrics</h3>
-										<p class="text-xs text-purple-700 font-medium">Emissions reporting</p>
+										<h3 class="font-bold text-foreground text-base mb-1">Carbon Metrics</h3>
+										<p class="text-xs text-purple-700 font-bold uppercase tracking-wide">Emissions reporting</p>
 									</div>
 								</div>
 								<p class="text-sm text-muted-foreground leading-relaxed">
@@ -215,14 +220,14 @@
 
 						<!-- Node 3: Compliance -->
 						<div class="space-y-6">
-							<div class="bg-rose-50 border border-rose-200 rounded-xl p-6">
-								<div class="flex items-start gap-3 mb-4">
-									<div class="h-10 w-10 rounded-lg bg-rose-100 flex items-center justify-center flex-shrink-0">
-										<Shield class="h-5 w-5 text-rose-700" />
+							<div class="group bg-rose-50/50 border border-rose-100 hover:border-rose-300 hover:shadow-lg hover:shadow-rose-100/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1">
+								<div class="flex items-start gap-4 mb-4">
+									<div class="h-12 w-12 rounded-xl bg-rose-100/80 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+										<Shield class="h-6 w-6 text-rose-700" />
 									</div>
 									<div>
-										<h3 class="font-bold text-foreground text-sm mb-1">Regulatory Gaps</h3>
-										<p class="text-xs text-rose-700 font-medium">Government oversight</p>
+										<h3 class="font-bold text-foreground text-base mb-1">Regulatory Gaps</h3>
+										<p class="text-xs text-rose-700 font-bold uppercase tracking-wide">Government oversight</p>
 									</div>
 								</div>
 								<p class="text-sm text-muted-foreground leading-relaxed">
@@ -230,14 +235,14 @@
 								</p>
 							</div>
 
-							<div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
-								<div class="flex items-start gap-3 mb-4">
-									<div class="h-10 w-10 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0">
-										<Lock class="h-5 w-5 text-slate-700" />
+							<div class="group bg-slate-50/50 border border-slate-100 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-100/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1">
+								<div class="flex items-start gap-4 mb-4">
+									<div class="h-12 w-12 rounded-xl bg-slate-100/80 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+										<Lock class="h-6 w-6 text-slate-700" />
 									</div>
 									<div>
-										<h3 class="font-bold text-foreground text-sm mb-1">Data Integrity</h3>
-										<p class="text-xs text-slate-700 font-medium">Trust architecture</p>
+										<h3 class="font-bold text-foreground text-base mb-1">Data Integrity</h3>
+										<p class="text-xs text-slate-700 font-bold uppercase tracking-wide">Trust architecture</p>
 									</div>
 								</div>
 								<p class="text-sm text-muted-foreground leading-relaxed">
@@ -273,90 +278,103 @@
 				</div>
 
 				<!-- Magazine-style Grid Layout -->
-				<div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 mb-8">
-					<!-- Large Featured - Fashion Retail -->
-					<div class="md:col-span-7 bg-gradient-to-br from-teal-100 to-emerald-50 border-l-4 border-teal-700 p-8 lg:p-10 shadow-sm">
-						<div class="flex items-start gap-4 mb-5">
-							<div class="h-12 w-12 rounded-2xl bg-teal-600/20 flex items-center justify-center flex-shrink-0">
-								<Store class="h-6 w-6 text-teal-800" />
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+					<!-- Fashion Retail -->
+					<div class="group bg-gradient-to-br from-teal-50 to-emerald-50/50 border-l-4 border-teal-600 p-6 shadow-sm hover:shadow-xl hover:shadow-teal-100/50 transition-all duration-300 hover:-translate-y-1">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="h-10 w-10 rounded-xl bg-teal-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+								<Store class="h-5 w-5 text-teal-700" />
 							</div>
 							<div>
-								<h3 class="text-xl sm:text-2xl font-bold text-teal-950 mb-1">Fashion Retail</h3>
-								<p class="text-xs font-bold text-teal-700 tracking-wide uppercase">H&M · Zara · Uniqlo</p>
+								<h3 class="text-lg font-bold text-teal-950">Fashion Retail</h3>
+								<p class="text-[10px] font-bold text-teal-700 tracking-widest uppercase">H&M · Zara · Uniqlo</p>
 							</div>
 						</div>
-						<p class="text-base text-teal-900/75 leading-relaxed font-medium">
+						<p class="text-sm text-teal-900/80 leading-relaxed font-medium">
 							Combat fast fashion criticism with verifiable sustainability reports and ethical sourcing proof.
 						</p>
 					</div>
 
 					<!-- Restaurants -->
-					<div class="md:col-span-5 bg-gradient-to-br from-amber-100 to-yellow-50 border-l-4 border-amber-700 p-8 shadow-sm">
-						<div class="h-12 w-12 rounded-2xl bg-amber-600/20 flex items-center justify-center mb-4">
-							<Utensils class="h-6 w-6 text-amber-800" />
+					<div class="group bg-gradient-to-br from-amber-50 to-yellow-50/50 border-l-4 border-amber-600 p-6 shadow-sm hover:shadow-xl hover:shadow-amber-100/50 transition-all duration-300 hover:-translate-y-1">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="h-10 w-10 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+								<Utensils class="h-5 w-5 text-amber-700" />
+							</div>
+							<div>
+								<h3 class="text-lg font-bold text-amber-950">Restaurants</h3>
+								<p class="text-[10px] font-bold text-amber-700 tracking-widest uppercase">Michelin-starred</p>
+							</div>
 						</div>
-						<h3 class="text-xl font-bold text-amber-950 mb-1">High-End Restaurants</h3>
-						<p class="text-xs font-bold text-amber-700 tracking-wide uppercase mb-3">Michelin-starred</p>
-						<p class="text-sm text-amber-900/75 leading-relaxed font-medium">
-							Verify premium ingredient origins with cryptographic certainty
+						<p class="text-sm text-amber-900/80 leading-relaxed font-medium">
+							Verify premium ingredient origins with cryptographic certainty.
+						</p>
+					</div>
+
+					<!-- Grocery -->
+					<div class="group bg-gradient-to-br from-green-50 to-lime-50/50 border-l-4 border-green-600 p-6 shadow-sm hover:shadow-xl hover:shadow-green-100/50 transition-all duration-300 hover:-translate-y-1">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="h-10 w-10 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+								<ShoppingBag class="h-5 w-5 text-green-700" />
+							</div>
+							<div>
+								<h3 class="text-lg font-bold text-green-950">Grocery Chains</h3>
+								<p class="text-[10px] font-bold text-green-700 tracking-widest uppercase">Whole Foods</p>
+							</div>
+						</div>
+						<p class="text-sm text-green-900/80 leading-relaxed font-medium">
+							Track cold-chain compliance and quality certifications.
 						</p>
 					</div>
 				</div>
 
 				<!-- Second Row -->
-				<div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 mb-8">
-					<!-- Grocery -->
-					<div class="md:col-span-4 bg-gradient-to-br from-green-100 to-lime-50 border-l-4 border-green-700 p-8 shadow-sm">
-						<div class="h-12 w-12 rounded-2xl bg-green-600/20 flex items-center justify-center mb-4">
-							<ShoppingBag class="h-6 w-6 text-green-800" />
-						</div>
-						<h3 class="text-xl font-bold text-green-950 mb-1">Grocery Chains</h3>
-						<p class="text-xs font-bold text-green-700 tracking-wide uppercase mb-3">Whole Foods · Trader Joe's</p>
-						<p class="text-sm text-green-900/75 leading-relaxed font-medium">
-							Track cold-chain compliance and quality certifications
-						</p>
-					</div>
-
-					<!-- Government - Featured -->
-					<div class="md:col-span-8 bg-gradient-to-br from-slate-100 to-zinc-50 border-l-4 border-slate-700 p-8 lg:p-10 shadow-sm">
-						<div class="flex items-start gap-4 mb-5">
-							<div class="h-12 w-12 rounded-2xl bg-slate-600/20 flex items-center justify-center flex-shrink-0">
-								<Building2 class="h-6 w-6 text-slate-800" />
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					<!-- Government -->
+					<div class="group bg-gradient-to-br from-slate-50 to-zinc-50/50 border-l-4 border-slate-600 p-6 shadow-sm hover:shadow-xl hover:shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+								<Building2 class="h-5 w-5 text-slate-700" />
 							</div>
 							<div>
-								<h3 class="text-xl sm:text-2xl font-bold text-slate-950 mb-1">Government Agencies</h3>
-								<p class="text-xs font-bold text-slate-700 tracking-wide uppercase">Regulatory & Compliance</p>
+								<h3 class="text-lg font-bold text-slate-950">Government</h3>
+								<p class="text-[10px] font-bold text-slate-700 tracking-widest uppercase">Regulatory</p>
 							</div>
 						</div>
-						<p class="text-base text-slate-900/75 leading-relaxed font-medium">
-							Verify corporate sustainability claims and track complex supply chains for regulatory compliance.
+						<p class="text-sm text-slate-900/80 leading-relaxed font-medium">
+							Verify corporate sustainability claims and track complex supply chains.
 						</p>
 					</div>
-				</div>
 
-				<!-- Third Row -->
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 					<!-- Suppliers -->
-					<div class="bg-gradient-to-br from-emerald-100 to-green-50 border-l-4 border-emerald-700 p-8 shadow-sm">
-						<div class="h-12 w-12 rounded-2xl bg-emerald-600/20 flex items-center justify-center mb-4">
-							<Leaf class="h-6 w-6 text-emerald-800" />
+					<div class="group bg-gradient-to-br from-emerald-50 to-green-50/50 border-l-4 border-emerald-600 p-6 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 transition-all duration-300 hover:-translate-y-1">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+								<Leaf class="h-5 w-5 text-emerald-700" />
+							</div>
+							<div>
+								<h3 class="text-lg font-bold text-emerald-950">Suppliers</h3>
+								<p class="text-[10px] font-bold text-emerald-700 tracking-widest uppercase">Farms · Makers</p>
+							</div>
 						</div>
-						<h3 class="text-xl font-bold text-emerald-950 mb-1">Premium Suppliers</h3>
-						<p class="text-xs font-bold text-emerald-700 tracking-wide uppercase mb-3">Farms · Manufacturers</p>
-						<p class="text-sm text-emerald-900/75 leading-relaxed font-medium">
-							Command premium pricing with verified quality certifications
+						<p class="text-sm text-emerald-900/80 leading-relaxed font-medium">
+							Command premium pricing with verified quality certifications.
 						</p>
 					</div>
 
-					<!-- Legal Documentation -->
-					<div class="bg-gradient-to-br from-orange-100 to-amber-50 border-l-4 border-orange-700 p-8 shadow-sm">
-						<div class="h-12 w-12 rounded-2xl bg-orange-600/20 flex items-center justify-center mb-4">
-							<FileCheck class="h-6 w-6 text-orange-800" />
+					<!-- Legal -->
+					<div class="group bg-gradient-to-br from-orange-50 to-amber-50/50 border-l-4 border-orange-600 p-6 shadow-sm hover:shadow-xl hover:shadow-orange-100/50 transition-all duration-300 hover:-translate-y-1">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="h-10 w-10 rounded-xl bg-orange-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+								<FileCheck class="h-5 w-5 text-orange-700" />
+							</div>
+							<div>
+								<h3 class="text-lg font-bold text-orange-950">Legal Docs</h3>
+								<p class="text-[10px] font-bold text-orange-700 tracking-widest uppercase">Invoices</p>
+							</div>
 						</div>
-						<h3 class="text-xl font-bold text-orange-950 mb-1">Legal Documentation</h3>
-						<p class="text-xs font-bold text-orange-700 tracking-wide uppercase mb-3">Invoices · Certifications</p>
-						<p class="text-sm text-orange-900/75 leading-relaxed font-medium">
-							Immutable proof of origin with blockchain-hashed documents
+						<p class="text-sm text-orange-900/80 leading-relaxed font-medium">
+							Immutable proof of origin with blockchain-hashed documents.
 						</p>
 					</div>
 				</div>
@@ -381,85 +399,101 @@
 				<!-- Comparison Grid -->
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 					<!-- Old Way -->
-					<div class="border-2 border-red-300 bg-gradient-to-br from-red-100/80 to-rose-50 p-8 lg:p-10 relative shadow-sm">
-						<div class="absolute top-6 right-6 opacity-15">
-							<span class="text-6xl text-red-700">✕</span>
+					<div class="group border-2 border-red-200 bg-gradient-to-br from-red-50 to-white p-8 lg:p-10 relative shadow-sm hover:shadow-xl hover:shadow-red-100/50 transition-all duration-300 hover:-translate-y-1 rounded-2xl">
+						<div class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+							<span class="text-8xl text-red-700 font-black leading-none">×</span>
 						</div>
 
-						<div class="mb-8">
-							<div class="inline-block px-3 py-1.5 bg-red-200 border border-red-300 rounded-full mb-4">
-								<span class="text-xs font-bold tracking-wide uppercase text-red-900">Old Way</span>
+						<div class="mb-8 relative">
+							<div class="inline-block px-3 py-1.5 bg-red-100 border border-red-200 rounded-full mb-4">
+								<span class="text-xs font-bold tracking-wide uppercase text-red-800">Old Way</span>
 							</div>
-							<h3 class="text-2xl font-bold text-red-950 mb-2">Self-Reported Data</h3>
-							<p class="text-sm text-red-800/70 font-medium">Unverifiable and prone to manipulation</p>
+							<h3 class="text-3xl font-bold text-red-950 mb-2">Self-Reported Data</h3>
+							<p class="text-base text-red-900/70 font-medium">Unverifiable and prone to manipulation</p>
 						</div>
 
-						<ul class="space-y-3">
+						<ul class="space-y-4 relative">
 							<li class="flex items-start gap-3">
 								<div class="flex-shrink-0 mt-1">
-									<span class="text-red-700 text-lg font-bold">×</span>
+									<div class="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center">
+										<span class="text-red-700 text-xs font-bold">✕</span>
+									</div>
 								</div>
-								<span class="text-sm text-red-900/80 font-medium">Companies verify their own claims</span>
+								<span class="text-base text-red-900/80 font-medium">Companies verify their own claims</span>
 							</li>
 							<li class="flex items-start gap-3">
 								<div class="flex-shrink-0 mt-1">
-									<span class="text-red-700 text-lg font-bold">×</span>
+									<div class="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center">
+										<span class="text-red-700 text-xs font-bold">✕</span>
+									</div>
 								</div>
-								<span class="text-sm text-red-900/80 font-medium">No way to audit transport routes</span>
+								<span class="text-base text-red-900/80 font-medium">No way to audit transport routes</span>
 							</li>
 							<li class="flex items-start gap-3">
 								<div class="flex-shrink-0 mt-1">
-									<span class="text-red-700 text-lg font-bold">×</span>
+									<div class="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center">
+										<span class="text-red-700 text-xs font-bold">✕</span>
+									</div>
 								</div>
-								<span class="text-sm text-red-900/80 font-medium">Carbon reports lack proof</span>
+								<span class="text-base text-red-900/80 font-medium">Carbon reports lack proof</span>
 							</li>
 							<li class="flex items-start gap-3">
 								<div class="flex-shrink-0 mt-1">
-									<span class="text-red-700 text-lg font-bold">×</span>
+									<div class="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center">
+										<span class="text-red-700 text-xs font-bold">✕</span>
+									</div>
 								</div>
-								<span class="text-sm text-red-900/80 font-medium">Origin claims can't be verified</span>
+								<span class="text-base text-red-900/80 font-medium">Origin claims can't be verified</span>
 							</li>
 						</ul>
 					</div>
 
 					<!-- New Way -->
-					<div class="border-2 border-emerald-300 bg-gradient-to-br from-emerald-100/80 to-green-50 p-8 lg:p-10 relative shadow-sm">
-						<div class="absolute top-6 right-6 opacity-15">
-							<CheckCircle2 class="h-16 w-16 text-emerald-700" />
+					<div class="group border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-8 lg:p-10 relative shadow-lg shadow-emerald-100/50 hover:shadow-2xl hover:shadow-emerald-200/50 transition-all duration-300 hover:-translate-y-1 rounded-2xl">
+						<div class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+							<CheckCircle2 class="h-24 w-24 text-emerald-700" />
 						</div>
 
-						<div class="mb-8">
-							<div class="inline-block px-3 py-1.5 bg-emerald-200 border border-emerald-300 rounded-full mb-4">
-								<span class="text-xs font-bold tracking-wide uppercase text-emerald-900">New Way</span>
+						<div class="mb-8 relative">
+							<div class="inline-block px-3 py-1.5 bg-emerald-100 border border-emerald-200 rounded-full mb-4">
+								<span class="text-xs font-bold tracking-wide uppercase text-emerald-800">New Way</span>
 							</div>
-							<h3 class="text-2xl font-bold text-emerald-950 mb-2">Blockchain Verification</h3>
-							<p class="text-sm text-emerald-800/70 font-medium">Cryptographically immutable and auditable</p>
+							<h3 class="text-3xl font-bold text-emerald-950 mb-2">Blockchain Verification</h3>
+							<p class="text-base text-emerald-900/70 font-medium">Cryptographically immutable and auditable</p>
 						</div>
 
-						<ul class="space-y-3">
+						<ul class="space-y-4 relative">
 							<li class="flex items-start gap-3">
 								<div class="flex-shrink-0 mt-0.5">
-									<CheckCircle2 class="h-5 w-5 text-emerald-700" />
+									<div class="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center">
+										<CheckCircle2 class="h-4 w-4 text-emerald-700" />
+									</div>
 								</div>
-								<span class="text-sm text-emerald-950 font-semibold">Cryptographically immutable records</span>
+								<span class="text-base text-emerald-950 font-semibold">Cryptographically immutable records</span>
 							</li>
 							<li class="flex items-start gap-3">
 								<div class="flex-shrink-0 mt-0.5">
-									<CheckCircle2 class="h-5 w-5 text-emerald-700" />
+									<div class="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center">
+										<CheckCircle2 class="h-4 w-4 text-emerald-700" />
+									</div>
 								</div>
-								<span class="text-sm text-emerald-950 font-semibold">Third-party verified at each step</span>
+								<span class="text-base text-emerald-950 font-semibold">Third-party verified at each step</span>
 							</li>
 							<li class="flex items-start gap-3">
 								<div class="flex-shrink-0 mt-0.5">
-									<CheckCircle2 class="h-5 w-5 text-emerald-700" />
+									<div class="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center">
+										<CheckCircle2 class="h-4 w-4 text-emerald-700" />
+									</div>
 								</div>
-								<span class="text-sm text-emerald-950 font-semibold">Auditable by government agencies</span>
+								<span class="text-base text-emerald-950 font-semibold">Auditable by government agencies</span>
 							</li>
 							<li class="flex items-start gap-3">
 								<div class="flex-shrink-0 mt-0.5">
-									<CheckCircle2 class="h-5 w-5 text-emerald-700" />
+									<div class="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center">
+										<CheckCircle2 class="h-4 w-4 text-emerald-700" />
+									</div>
 								</div>
-								<span class="text-sm text-emerald-950 font-semibold">Tamper-proof origin documentation</span>
+								<span class="text-base text-emerald-950 font-semibold">Tamper-proof origin documentation</span>
 							</li>
 						</ul>
 					</div>
@@ -503,7 +537,7 @@
 					<!-- Brand Column - Wider -->
 					<div class="lg:col-span-5 space-y-6">
 						<div>
-							<h3 class="text-2xl font-bold text-foreground mb-3">VerifyChain</h3>
+							<img src={logo} alt="VerifyChain" class="h-12 w-auto mb-4" />
 							<p class="text-sm text-muted-foreground leading-relaxed max-w-md">
 								Enterprise blockchain solutions for verifiable supply chain transparency. Prove origins, track routes, and document sustainability with immutable third-party verification.
 							</p>
