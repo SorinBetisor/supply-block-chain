@@ -15,20 +15,17 @@ export class BlockClass {
 	public timestamp: number;
 	public data: SupplyChainStepData;
 	public hash: string;
-	public nonce: number;
 
 	constructor(
 		index: number,
 		previousHash: string,
 		data: SupplyChainStepData,
-		timestamp?: number,
-		nonce: number = 0
+		timestamp?: number
 	) {
 		this.index = index;
 		this.previousHash = previousHash;
 		this.timestamp = timestamp || Date.now();
 		this.data = data;
-		this.nonce = nonce;
 		this.hash = ''; // Will be calculated
 	}
 
@@ -40,8 +37,7 @@ export class BlockClass {
 			index: this.index,
 			previousHash: this.previousHash,
 			timestamp: this.timestamp,
-			data: this.data,
-			nonce: this.nonce
+			data: this.data
 		});
 		this.hash = hash;
 		return hash;
@@ -79,8 +75,7 @@ export class BlockClass {
 			previousHash: this.previousHash,
 			timestamp: this.timestamp,
 			data: this.data,
-			hash: this.hash,
-			nonce: this.nonce
+			hash: this.hash
 		};
 	}
 
@@ -92,8 +87,7 @@ export class BlockClass {
 			blockData.index,
 			blockData.previousHash,
 			blockData.data,
-			blockData.timestamp,
-			blockData.nonce
+			blockData.timestamp
 		);
 		block.hash = blockData.hash;
 		return block;

@@ -25,8 +25,8 @@ export class Blockchain {
 	 */
 	async createGenesisBlock(): Promise<BlockClass> {
 		const genesisData = this.generateGenesisData();
-		const randomNonce = Math.floor(Math.random() * 1000000); // Generate random nonce 0-999999
-		const genesisBlock = new BlockClass(0, '0', genesisData, undefined, randomNonce);
+		const genesisBlock = new BlockClass(0, '0', genesisData);
+		
 		await genesisBlock.calculateHash();
 		this.chain.push(genesisBlock);
 		return genesisBlock;
@@ -146,8 +146,7 @@ export class Blockchain {
 			index: genesisBlock.index,
 			previousHash: genesisBlock.previousHash,
 			timestamp: genesisBlock.timestamp,
-			data: genesisBlock.data,
-			nonce: genesisBlock.nonce
+			data: genesisBlock.data
 		});
 
 		if (genesisHash !== genesisBlock.hash) {
@@ -185,8 +184,7 @@ export class Blockchain {
 				index: currentBlock.index,
 				previousHash: currentBlock.previousHash,
 				timestamp: currentBlock.timestamp,
-				data: currentBlock.data,
-				nonce: currentBlock.nonce
+				data: currentBlock.data
 			});
 
 			if (calculatedHash !== currentBlock.hash) {
@@ -221,8 +219,7 @@ export class Blockchain {
 				index: block.index,
 				previousHash: block.previousHash,
 				timestamp: block.timestamp,
-				data: block.data,
-				nonce: block.nonce
+				data: block.data
 			});
 
 			if (calculatedHash !== block.hash) {
