@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
 	import logo from "$lib/assets/logo.png";
-	import { ArrowRight, Database, ShoppingBag, Github, Shield, TrendingUp, FileCheck, Building2, Store, Utensils, Leaf, CheckCircle2, BarChart3, Globe, Network, Lock, GitBranch, Boxes, Workflow } from "@lucide/svelte";
+	import { ArrowRight, Database, ShoppingBag, Github, Shield, TrendingUp, FileCheck, Building2, Store, Utensils, Leaf, CheckCircle2, BarChart3, Globe, Network, Lock, GitBranch, Boxes, Workflow } from "lucide-svelte";
 	import BlockchainAnimation from "$lib/components/BlockchainAnimation.svelte";
 
 	function scrollToSection(id: string) {
@@ -92,6 +92,16 @@
 						<Button href="/zara-demo" size="lg" class="w-full sm:w-auto gap-2 h-14 px-8 font-bold text-base shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:-translate-y-0.5">
 							<ShoppingBag class="h-5 w-5" />
 							See Live Demo
+							<ArrowRight class="h-4 w-4" />
+						</Button>
+						<Button href="/business-portal" size="lg" class="w-full sm:w-auto gap-2 h-14 px-8 font-bold text-base bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30 transition-all hover:-translate-y-0.5">
+							<Building2 class="h-5 w-5" />
+							Business Portal
+							<ArrowRight class="h-4 w-4" />
+						</Button>
+						<Button href="/government-portal" size="lg" class="w-full sm:w-auto gap-2 h-14 px-8 font-bold text-base bg-slate-700 hover:bg-slate-800 text-white shadow-lg shadow-slate-700/20 hover:shadow-slate-700/30 transition-all hover:-translate-y-0.5">
+							<Shield class="h-5 w-5" />
+							Government Portal
 							<ArrowRight class="h-4 w-4" />
 						</Button>
 						<Button href="/blockchain-editor" variant="outline" size="lg" class="w-full sm:w-auto gap-2 h-14 px-8 font-bold text-base hover:bg-secondary/50 transition-all hover:-translate-y-0.5">
@@ -518,6 +528,14 @@
 						<ShoppingBag class="h-5 w-5" />
 						Launch Zara Demo
 						<ArrowRight class="h-5 w-5" />
+					</Button>
+					<Button href="/business-portal" size="lg" class="w-full sm:w-auto gap-2 h-14 px-10 font-bold text-base bg-blue-600 hover:bg-blue-700 text-white">
+						<Building2 class="h-5 w-5" />
+						Business Portal
+					</Button>
+					<Button href="/government-portal" size="lg" class="w-full sm:w-auto gap-2 h-14 px-10 font-bold text-base bg-slate-700 hover:bg-slate-800 text-white">
+						<Shield class="h-5 w-5" />
+						Government Portal
 					</Button>
 					<Button href="/blockchain-editor" variant="outline" size="lg" class="w-full sm:w-auto gap-2 h-14 px-10 font-semibold text-base">
 						<Database class="h-5 w-5" />
