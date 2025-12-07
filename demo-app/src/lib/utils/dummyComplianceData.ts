@@ -3,24 +3,7 @@ import { calculateBlockHash } from '$lib/blockchain/utils/utils';
 
 // Generate dummy compliance data for demo purposes
 export async function initializeDummyDataForZara() {
-	// Check if dummy data was already initialized
-	const dummyInitialized = localStorage.getItem('blockchain_zara_dummy_initialized');
-	if (dummyInitialized === 'true') {
-		return; // Dummy data already added, don't re-initialize
-	}
-
-	// Load any existing user-submitted data
-	const existingData = localStorage.getItem('blockchain_zara');
-	let existingBlocks: Block[] = [];
-	
-	if (existingData) {
-		try {
-			existingBlocks = JSON.parse(existingData);
-		} catch (error) {
-			console.error('Failed to parse existing blockchain:', error);
-		}
-	}
-
+	// Force reset to dummy data (remove business view logic / user data)
 	const now = Date.now();
 	const dummyBlocks: Block[] = [];
 
@@ -442,43 +425,9 @@ export async function initializeDummyDataForZara() {
 		}
 	});
 
-	// Merge dummy blocks with any existing user-submitted blocks (excluding genesis)
-	// We identify user blocks as those that are not the genesis block (index > 0)
-	// Since business portal initializes with just genesis if empty, existingBlocks might be [Genesis, UserBlock1, ...]
-	
-	const finalBlocks = [...dummyBlocks];
-	
-	if (existingBlocks.length > 0) {
-		// Filter out genesis block from existing data
-		const userBlocks = existingBlocks.filter(b => b.index > 0);
-		
-		// Append user blocks to dummy chain, recalculating hashes to maintain validity
-		for (const userBlock of userBlocks) {
-			const lastBlock = finalBlocks[finalBlocks.length - 1];
-			const newIndex = finalBlocks.length;
-			const newPreviousHash = lastBlock.hash;
-			
-			// Create new block object for hashing (excluding hash itself)
-			const blockDataForHash = {
-				index: newIndex,
-				previousHash: newPreviousHash,
-				timestamp: userBlock.timestamp, // Keep original timestamp
-				data: userBlock.data
-			};
-			
-			// Calculate new hash
-			const newHash = await calculateBlockHash(blockDataForHash);
-			
-			finalBlocks.push({
-				...blockDataForHash,
-				hash: newHash
-			});
-		}
-	}
-
-	// Save merged chain to localStorage
-	localStorage.setItem('blockchain_zara', JSON.stringify(finalBlocks));
+	// Save dummy data to localStorage (overwrite any existing data)
+	localStorage.setItem('blockchain_zara', JSON.stringify(dummyBlocks));
 	localStorage.setItem('blockchain_zara_dummy_initialized', 'true');
-	console.log('Initialized dummy compliance data for Zara with', finalBlocks.length, 'blocks (including merged user blocks)');
+	console.log('Reset dummy compliance data for Zara with', dummyBlocks.length, 'blocks');
 }
 
